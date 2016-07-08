@@ -20,8 +20,12 @@
     function transpile() {
       var content = left.value;
       var newContent = content.split('\n')
-                              .map((a) => a.replace(/"/g, '\\"'))
-                              .map((a) => '"' + a + '"')
+                              .map(function (a) {
+                                return a.replace(/"/g, '\\"');
+                              })
+                              .map(function (a) {
+                                return '"' + a + '"';
+                              })
                               .join(' +\n')
       right.value = newContent;
     }
