@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-line text to Java string</title>
+  <style>
+    html, body { margin: 0; height: 100%; position: relative; }
+    #left  { margin: 1%; position: absolute; left: 0; top: 0; width: 48%; height: 90%; }
+    #right { margin: 1%; position: absolute; right: 0; top: 0; width: 48%; height: 90%;}
+    textarea { font-family: monospace; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <textarea id="left" placeholder="Your text goes here..."></textarea>
+  <textarea id="right" placeholder="Your Java string gets converted here.">""</textarea>
+  <script>
+    var left = document.getElementById('left');
+    var right = document.getElementById('right');
+    left.addEventListener('keyup', transpile);
+    function transpile() {
+      var content = left.value;
+      var newContent = content.split('\n')
+                              .map((a) => a.replace(/"/g, '\\"'))
+                              .map((a) => '"' + a + '"')
+                              .join(' + \n')
+      right.value = newContent;
+    }
+  </script>
+</body>
+</html>
