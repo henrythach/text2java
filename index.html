@@ -22,7 +22,7 @@
       var newContent = content.split('\n')
                               .map((a) => a.replace(/"/g, '\\"'))
                               .map((a) => '"' + a + '"')
-                              .join(' + \n')
+                              .join(' +\n')
       right.value = newContent;
     }
   </script>
