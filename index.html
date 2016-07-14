@@ -4,27 +4,42 @@
   <meta charset="UTF-8">
   <title>Multi-line text to Java string</title>
   <style>
-    html, body { margin: 0; height: 100%; position: relative; }
+    html, body { margin: 0; height: 95%; position: relative; }
+    #options { margin: 10px; text-align: center; }
+    #container { position: relative; height: 90%; }
     #left  { margin: 1%; position: absolute; left: 0; top: 0; width: 48%; height: 90%; }
     #right { margin: 1%; position: absolute; right: 0; top: 0; width: 48%; height: 90%;}
     textarea { font-family: monospace; font-size: 12px; }
   </style>
 </head>
 <body>
-  <textarea id="left" placeholder="Your text goes here..."></textarea>
-  <textarea id="right" placeholder="Your Java string gets converted here.">""</textarea>
+  <div id="options">
+    <h2>Options</h2>
+    <label for="option-space-eol">
+      <input type="checkbox" name="space-eol" id="option-space-eol" checked>
+      Space after line
+    </label>
+  </div>
+  <div id="container">
+    <textarea id="left" placeholder="Your text goes here..."></textarea>
+    <textarea id="right" placeholder="Your Java string gets converted here.">""</textarea>
+  </div>
   <script>
     var left = document.getElementById('left');
     var right = document.getElementById('right');
+    var optionSpaceEol = document.getElementById('option-space-eol');
     left.addEventListener('keyup', transpile);
+    optionSpaceEol.addEventListener('change', transpile);
+
     function transpile() {
       var content = left.value;
+      var spaceEol = optionSpaceEol.checked ? ' ' : '';
       var newContent = content.split('\n')
                               .map(function (a) {
                                 return a.replace(/"/g, '\\"');
                               })
                               .map(function (a) {
-                                return '"' + a + ' "';
+                                return '"' + a + spaceEol + '"';
                               })
                               .join(' +\n')
       right.value = newContent;
