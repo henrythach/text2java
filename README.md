@@ -18,8 +18,8 @@ SELECT *
 into
 
 ```java
-"SELECT *" +
-"  FROM users" +
-" WHERE first_name = 'Henry'" +
-"   AND last_name = 'Thach'"
+"SELECT * " +
+"  FROM users " +
+" WHERE first_name = 'Henry' " +
+"   AND last_name = 'Thach' "
 ```
