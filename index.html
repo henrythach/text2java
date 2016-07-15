@@ -19,6 +19,10 @@
       <input type="checkbox" name="space-eol" id="option-space-eol" checked>
       Space after line
     </label>
+    <label for="option-empty-lines">
+      <input type="checkbox" name="empty-lines" id="option-empty-lines" checked>
+      Remove empty lines
+    </label>
   </div>
   <div id="container">
     <textarea id="left" placeholder="Your text goes here..."></textarea>
@@ -28,13 +32,19 @@
     var left = document.getElementById('left');
     var right = document.getElementById('right');
     var optionSpaceEol = document.getElementById('option-space-eol');
+    var optionEmptyLines = document.getElementById('option-empty-lines');
     left.addEventListener('keyup', transpile);
     optionSpaceEol.addEventListener('change', transpile);
+    optionEmptyLines.addEventListener('change', transpile);
 
     function transpile() {
       var content = left.value;
       var spaceEol = optionSpaceEol.checked ? ' ' : '';
+      var emptyLines = optionEmptyLines.checked;
       var newContent = content.split('\n')
+                              .filter(function (a) {
+                                return (a.trim() === '' && emptyLines) ? false : true;
+                              })
                               .map(function (a) {
                                 return a.replace(/"/g, '\\"');
                               })
