@@ -4,7 +4,12 @@ A quick and dirty online tool that converts multi-line text to a concatenated St
 
 Check it out at http://henrythach.github.io/text2java.
 
-Example:
+## Options
+
+- [x] Space after line
+- [x] Remove empty lines
+
+## Example
 
 It will convert this:
 
