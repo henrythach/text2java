@@ -49,6 +49,9 @@
                                 return a.replace(/"/g, '\\"');
                               })
                               .map(function (a) {
+                                return a.replace(/\\/g, '\\\\');
+                              })
+                              .map(function (a) {
                                 return '"' + a + spaceEol + '"';
                               })
                               .join(' +\n')
