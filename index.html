@@ -10,6 +10,7 @@
     #container { position: relative; height: 90%; }
     #left  { margin: 1%; position: absolute; left: 0; top: 0; width: 48%; height: 90%; }
     #right { margin: 1%; position: absolute; right: 0; top: 0; width: 48%; height: 90%;}
+    label, input { cursor: pointer; }
     textarea { font-family: 'Roboto Mono', monospace; font-size: 12px; }
   </style>
 </head>
@@ -27,7 +28,7 @@
   </div>
   <div id="container">
     <textarea id="left" placeholder="Your text goes here..."></textarea>
-    <textarea id="right" placeholder="Your Java string gets converted here.">""</textarea>
+    <textarea id="right" placeholder="Your Java string gets converted here."></textarea>
   </div>
   <script>
     var left = document.getElementById('left');
