@@ -48,10 +48,11 @@
                                 return (a.trim() === '' && emptyLines) ? false : true;
                               })
                               .map(function (a) {
-                                return a.replace(/"/g, '\\"');
-                              })
-                              .map(function (a) {
                                 return a.replace(/\\/g, '\\\\');
+                              })
+
+                              .map(function (a) {
+                                return a.replace(/"/g, '\\"');
                               })
                               .map(function (a) {
                                 return '"' + a + spaceEol + '"';
